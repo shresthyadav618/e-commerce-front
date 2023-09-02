@@ -1,7 +1,7 @@
-img{
+/* img{
   mix-blend-mode: lighten ;
   filter: contrast(1);
-}
+} */
 .main__btn{
   background-color: #5542F6;
   border: 0;
@@ -21,4 +21,11 @@ img{
 }
 svg{
   height: 20px!important;
+}
+.cart__btn{
+  padding: 5px 10px;
+  color: #0D3D29;
+  border: 1px solid #0D3D29;
+  border-radius: 5px;
+  font-weight: 600;
 }
