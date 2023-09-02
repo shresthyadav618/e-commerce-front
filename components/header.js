@@ -1,6 +1,8 @@
 "use client"
 import Link from "next/link";
+import { useContext } from "react";
 import { styled } from "styled-components";
+import { CartContext } from "./cartContext";
 const StyledHeader = styled.header`
 display: flex;
 justify-content: space-between;
@@ -10,6 +12,8 @@ color: white;
 `;
 export default function header(){
 
+    const {cartProducts} = useContext(CartContext);
+    const cartSize = cartProducts?.length || 0;
     
   return(
       <header>
@@ -20,7 +24,7 @@ export default function header(){
             <Link href={'/products'}>Products</Link>
             <Link href={'/categories'}>Categories</Link>
             <Link href={'/account'}>Account</Link>
-            <Link href={'/cart'}>Cart (0)</Link>
+            <Link href={'/cart'}>Cart ({cartSize})</Link>
         </nav>
         </StyledHeader>
     </header>
