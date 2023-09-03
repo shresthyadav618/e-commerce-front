@@ -30,11 +30,11 @@ svg{
   font-weight: 600;
 }
 .new__cart__btn{
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-weight: 600;
-  background-color: #0D3D29;
+  color: white!important;
+  padding: 5px 10px!important;
+  border-radius: 5px!important;
+  font-weight: 600!important;
+  background-color: #0D3D29!important;
 }
 table{
   width: 100%;
@@ -61,4 +61,13 @@ td{
 }
 tr > td{
   width: 200px;
+}
+input{
+padding: 5px 10px!important;
+border: 2px solid #0D3D29!important;
+border-radius: 5px;
+color: black!important;
+}
+.two__input__container > input{
+width: 50%!important;
 }

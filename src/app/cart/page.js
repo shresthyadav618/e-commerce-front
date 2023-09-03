@@ -12,6 +12,14 @@ export default function page(){
     const {cartProducts , setCartProducts} = useContext(CartContext);
     console.log('THE VALUE OF CART PRODUCTS ARE : ',cartProducts);
     const [products,setProducts] = useState([]);
+    const [information,setInformation] = useState({
+        name : "",
+        email : "",
+        city : "",
+        postalCode : "",
+        streetAddress : "",
+        country : ""
+    })
     const uniqueCartProducts = new Set(cartProducts);
     const uniqueProducts = [...uniqueCartProducts];
     useEffect(()=>{
@@ -71,6 +79,23 @@ export default function page(){
             })
         }
     }
+    console.log('THE VALUE OF INFORMATION IS : ',information);
+    function handleInfoChange(pname , e){
+        const value = e.target.value;
+        setInformation((prev)=>{
+            return {...prev , [pname] : value};
+        })
+    }
+
+    async function handleFormSubmit(e){
+        e.preventDefault();
+        const response = await fetch('/api/checkout',{
+            method : 'POST',
+            headers : {'Content-Type':'application/json'},
+            body : JSON.stringify({...information , cartProducts})
+        })
+    }
+
 return(
     <div className="flex flex-col w-full">
         <Header/>
@@ -115,7 +140,19 @@ return(
            {cartProducts && cartProducts.length>0 && 
            <div className="cart__second__container w-[30%] bg-white text-black flex flex-col p-4 rounded-lg gap-y-4">
             <h1 className="font-bold">Order Information</h1>
-            <button className="new__cart__btn">Continue to payment</button>
+            <form className="flex flex-col gap-y-4" onSubmit={(e)=>{handleFormSubmit(e)}}>
+            <input placeholder="Name" onChange={(e)=>{handleInfoChange("name" , e)}}  value={information.name} ></input>
+            <input placeholder="Email" onChange={(e)=>{handleInfoChange("email" , e)}}  value={information.email} type="email"></input>
+            
+            <div className="flex two__input__container w-full gap-x-1">
+              <input placeholder="City" onChange={(e)=>{handleInfoChange("city" , e)}} value={information.city} ></input>
+              <input placeholder="Postal Code" onChange={(e)=>{handleInfoChange("postalCode" , e)}} value={information.postalCode} type="number"></input>
+            </div>
+
+            <input placeholder="Street Address" onChange={(e)=>{handleInfoChange("streetAddress" , e)}} value={information.streetAddress} ></input>
+            <input placeholder="Country" onChange={(e)=>{handleInfoChange("country" , e)}} value={information.country} ></input>
+            <button className="new__cart__btn" type="submit">Continue to payment</button>
+            </form>
            </div>
            }
         </div>
