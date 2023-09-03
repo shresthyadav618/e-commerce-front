@@ -100,6 +100,12 @@ return(
                         <td> {p.price * cartProducts.filter((pro)=>{return pro === p._id}).length } </td>
                     </tr>
                   })}
+                  
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            {totalPrice!==NaN && totalPrice!==0 && <td>${totalPrice}</td> }
+                        </tr>
                     </tbody>
                   </table>
                  </div>
