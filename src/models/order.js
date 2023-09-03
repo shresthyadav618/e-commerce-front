@@ -25,6 +25,8 @@ const orderSchema = mongoose.Schema({
  paid : {
     type : Boolean
  }
+},{
+  timestamps : true ,
 });
 
 export const orderModel = mongoose.models.orders || mongoose.model('orders',orderSchema);

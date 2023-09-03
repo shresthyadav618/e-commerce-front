@@ -87,6 +87,13 @@ export default function page(){
         })
     }
 
+
+    useEffect(()=>{
+        if(windowType!=='undefined' && window?.location?.href.includes('success')){
+            setCartProducts([]);
+        }
+    },[])
+
     async function handleFormSubmit(e){
         e.preventDefault();
         const response = await fetch('/api/checkout',{
