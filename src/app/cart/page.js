@@ -92,14 +92,37 @@ export default function page(){
         const response = await fetch('/api/checkout',{
             method : 'POST',
             headers : {'Content-Type':'application/json'},
-            body : JSON.stringify({...information , cartProducts})
-        })
+            body : JSON.stringify({...information , cartProducts , products})
+        });
+        if(response.ok){
+            console.log('THE RESPONSE IS : ',response);
+            const responseJson = await response.json();
+            console.log('THE RESPONSE JSON IS : ',responseJson.url);
+            
+            if(windowType!=='undefined')
+            window.location.href = responseJson.url;
+        }else{
+            console.log('there was some error while getting back the url');
+        }
+    }
+
+    // const windowType = typeof(window);
+    if( windowType!=='undefined' && window?.location?.href.includes('success')){
+        return <div className="flex flex-col w-full h-[100vh]">
+            <Header/>
+            <div className="flex flex-col bg-[#f0f0f0] p-8 h-[100%]">
+            <div className="cart__first__container w-[60%] bg-white text-black p-4 rounded-lg">
+                <h1 className="font-bold text-xl">Thanks for Your order!</h1>
+                <span>We will email you when your order will be sent.</span>
+            </div>
+            </div>
+        </div>
     }
 
 return(
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full h-[100vh]">
         <Header/>
-        <div className="flex w-full gap-x-8 items-center justify-center bg-[#f0f0f0] p-6 cart__container">
+        <div className="flex w-full gap-x-8 items-center justify-center bg-[#f0f0f0] p-6 cart__container h-[100%]">
            <div className="cart__first__container w-[60%] bg-white text-black p-4 rounded-lg">
             {cartProducts.length ?
                  <div> 
