@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const categoriesSchema = mongoose.Schema({
+export const categoriesSchema = mongoose.Schema({
     name : {
         type : String,
         required : true

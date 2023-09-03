@@ -1,12 +1,19 @@
 "use client"
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 export const CartContext = createContext({});
 
 export function CartContextProvider({children}){
-    const [cartProducts,setCartProducts] = useState([]);
+    console.log(typeof(window));
+    const windowType = typeof(window);
+    const [cartProducts,setCartProducts] = useState( windowType!=='undefined' ? JSON.parse(sessionStorage.getItem('cart')) || [] : [] );
+    
     console.log('INSIDE THE CONTEXT',cartProducts);
+    useEffect(()=>{
+        sessionStorage.setItem('cart',JSON.stringify(cartProducts));
+        
+    },[cartProducts])
     function addToCart(productId){
-        if(cartProducts.includes(productId)){
+        if(cartProducts?.includes(productId)){
             return;
         }
         setCartProducts((prev)=>{
