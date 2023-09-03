@@ -36,3 +36,29 @@ svg{
   font-weight: 600;
   background-color: #0D3D29;
 }
+table{
+  width: 100%;
+}
+th{
+  text-align: left;
+  text-transform: uppercase;
+  color: #aaa;
+  font-weight: 600;
+  font-size: .7rem;
+}
+/* td{
+  border-top: 1px solid rgba(0,0,0,0.1);
+} */
+.image__box{
+  max-width: 100px;
+  max-height: 100px;
+  padding: 10px;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 10px;
+  display: flex;
+  justify-content : center;
+  align-items: center;
+}
+tr > td{
+  width: 200px;
+}

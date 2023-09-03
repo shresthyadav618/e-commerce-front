@@ -13,9 +13,9 @@ export function CartContextProvider({children}){
         
     },[cartProducts])
     function addToCart(productId){
-        if(cartProducts?.includes(productId)){
-            return;
-        }
+        // if(cartProducts?.includes(productId)){
+        //     return;
+        // }
         setCartProducts((prev)=>{
             return [...prev , productId];
         })
