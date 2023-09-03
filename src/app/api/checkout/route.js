@@ -32,7 +32,7 @@ try{
     
 
     const newOrder = new orderModel({
-        line_items , city , country , email , name , postalCode, streetAddress 
+        line_items , city , country , email , name , postalCode, streetAddress , paid:false
     });
     const newOrderSave = await newOrder.save();
     console.log('the new order is saved');
@@ -43,7 +43,7 @@ try{
         customer_email : email,
         success_url : process.env.PUBLIC_URL + '/cart?success=1',
         cancel_url : process.env.PUBLIC_URL + '/cart?canceled=1',
-        metadata : {orderId : newOrderSave._id}
+        metadata : {orderId : newOrderSave._id , test:'OK'}
     })
 
     return NextResponse.json({
