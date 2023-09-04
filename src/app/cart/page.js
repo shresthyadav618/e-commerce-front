@@ -2,6 +2,7 @@
 import { useContext, useEffect, useState } from "react"
 import { CartContext } from "../../../components/cartContext"
 import Header from "../../../components/header"
+// import "../../styles/cart.css";
 import "../../styles/cart.css"
 export default function page(){
     const windowType = typeof(window);
@@ -44,7 +45,7 @@ export default function page(){
          getData();
     },[cartProducts]);
  
-    let totalPrice = parseInt(0);
+    let totalPrice = 0;
     uniqueCartProducts.forEach((elm)=>{
         const productId = elm;
         const reqProduct = products.filter((child)=>{return child._id === productId});
@@ -125,7 +126,7 @@ export default function page(){
             </div>
         </div>
     }
-
+totalPrice = Number(totalPrice);
 return(
     <div className="flex flex-col w-full h-[100vh]">
         <Header/>
@@ -152,14 +153,14 @@ return(
                         }}>-</button> <span className="ml-2 mr-2">{cartProducts.filter((pro)=>{return pro === p._id}).length}</span>  <button className="new__cart__btn" onClick={()=>{
                             changeProductOccurences("+",p);
                         }}>+</button> </td>
-                        <td> {p.price * cartProducts.filter((pro)=>{return pro === p._id}).length } </td>
+                        <td> {  p.price * cartProducts.filter((pro)=>{return pro === p._id}).length } </td>
                     </tr>
                   })}
                   
                         <tr>
                             <td></td>
                             <td></td>
-                            {totalPrice!==NaN && totalPrice!==0 && <td>${totalPrice}</td> }
+                            {isNaN(totalPrice)? <td></td> : <td>₹{totalPrice}</td> }
                         </tr>
                     </tbody>
                   </table>
