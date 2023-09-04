@@ -13,7 +13,6 @@ const endpointSecret = "whsec_98529449bb0ed30a7fd9e01d6fb4ef8b8ac250ad78481bb621
 const sig = headers().get('stripe-signature');
 // const reqBody = await NextRequest.json();
   let event;
-
   try {
     event = stripe.webhooks.constructEvent(body, sig, endpointSecret);
   } catch (err) {
@@ -23,7 +22,6 @@ const sig = headers().get('stripe-signature');
         body: err.message
     })
   }
-
   // Handle the event
   console.log('the event type is : ',event.type);
   console.log('the event is',event);
@@ -35,8 +33,6 @@ const sig = headers().get('stripe-signature');
     default:
       console.log(`Unhandled event type ${event.type}`);
   }
-
-
 }
 
 // export const config = {

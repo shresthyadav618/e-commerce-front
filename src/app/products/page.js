@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../../components/cartContext";
 import Header from "../../../components/header";
@@ -21,11 +22,11 @@ export default function page(){
     return(
         <div className="flex flex-col w-full h-[100vh]">
             <Header/>
-            <div className="w-[100%] h-[100vh] bg-[#f0f0f0] flex flex-col">
+            <div className="w-[100%] h-[100vh] bg-[#f0f0f0] flex flex-col p-6">
             <h1 className="font-bold text-xl">All Products</h1>
             <div className=" product__container flex flex-wrap">
                 {products && products.length>0 && products.map((p)=>{
-                  return <div className="flex flex-col ">
+                  return <Link className="flex flex-col " href={`/products/${p._id}`}>
                     <div className="product__image__container"><img className="product__image" src={p.images[0]}></img></div>
                     <div className="flex p-2 flex-col">
                     <div className="font-bold">{p.name}</div>
@@ -34,7 +35,7 @@ export default function page(){
                       <button className="cart__btn" onClick={()=>{addToCart(p._id)}}>Add to cart</button>
                     </div>
                     </div>
-                  </div>  
+                  </Link>  
                 })}
             </div>
             </div>

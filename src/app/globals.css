@@ -71,3 +71,13 @@ color: black!important;
 .two__input__container > input{
 width: 50%!important;
 }
+
+
+
+.single__container__con {
+max-height: 300px;
+/* min-height: fit-content; */
+height: fit-content;
+justify-content: center;
+align-items: center;
+}
