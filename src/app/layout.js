@@ -2,7 +2,7 @@
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
 import { createGlobalStyle } from "styled-components";
-import { CartContextProvider } from '../../components/cartContext';
+import ContextProvider from '../../components/ContextProvider';
 import './globals.css';
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,9 +22,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
        <GlobalStyles/>
-       <CartContextProvider>
-          {children}
-       </CartContextProvider>
+
+       <ContextProvider>{children}</ContextProvider>
        
        </body>
        <Script src="https://cdn.tailwindcss.com"></Script>
