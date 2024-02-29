@@ -3,7 +3,7 @@ import { usePathname } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../../../components/cartContext";
 import Header from "../../../../components/header";
-export default function page(){
+export default function useProductsId(){
     const pathname = usePathname();
     const id = pathname.split('/')[2];
     const [product,setProduct] = useState(null);
@@ -40,7 +40,7 @@ export default function page(){
                     <div><img src={product?.images?.[0]} width={'100px'} height={'100px'} className="object-contain"></img></div>
                     <div className="flex"> 
                     {product?.images && product.images.length>1 && product.images.map((imageElm , idx)=>{
-                        if(idx >=1){return <img src={imageElm} width={'60px'} height={'60px'} className="object-contain"></img>}
+                        if(idx >=1){return <img key={idx} src={imageElm} width={'60px'} height={'60px'} className="object-contain"></img>}
                     })}
                      </div>
                 </div>

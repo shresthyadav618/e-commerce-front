@@ -1,5 +1,6 @@
 "use client"
 import { Inter } from 'next/font/google';
+import Script from 'next/script';
 import { createGlobalStyle } from "styled-components";
 import { CartContextProvider } from '../../components/cartContext';
 import './globals.css';
@@ -26,7 +27,7 @@ export default function RootLayout({ children }) {
        </CartContextProvider>
        
        </body>
-       <script src="https://cdn.tailwindcss.com"></script>
+       <Script src="https://cdn.tailwindcss.com"></Script>
     </html>
   )
 }

@@ -2,7 +2,7 @@
 import { useContext } from "react";
 import { CartContext } from "./cartContext";
 import "./styles/newProducts.css";
-export default function NewProducts({products}){
+export default function useNewProducts({products}){
     console.log('INSIDE THE NEWPRODCUTS THE PRODUCTS ARE',products);
     const {addToCart} = useContext(CartContext);
     return(
@@ -10,7 +10,7 @@ export default function NewProducts({products}){
             <h1>New Arrivals</h1>
             <div className=" product__container flex flex-wrap items-center justify-center">
                 {products && products.length>0 && products.map((p)=>{
-                  return <div className="flex flex-col p-6">
+                  return <div key={p._id} className="flex flex-col p-6">
                     <div className="product__image__container"><img className="product__image" src={p.images[0]}></img></div>
                     <div className="flex p-2 flex-col">
                     <div className="font-bold">{p.name}</div>

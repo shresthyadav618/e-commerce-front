@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useContext } from "react";
 import { CartContext } from "./cartContext";
 import "./styles/featured.css";
-export default function featured({product}){
+export default function useFeatured({product}){
     console.log('the product inside the featured component is : ',product);
     const {cartProducts,setCartProducts,addToCart} = useContext(CartContext);
     console.log('GOT THIS FROM THE CARTCONTEXT',cartProducts)

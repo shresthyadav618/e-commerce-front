@@ -4,7 +4,7 @@ import { CartContext } from "../../../components/cartContext"
 import Header from "../../../components/header"
 // import "../../styles/cart.css";
 import "../../styles/cart.css"
-export default function page(){
+export default function useCart(){
     const BASE_URL = "https://e-commerce-admin-eight-mocha.vercel.app";
     const windowType = typeof(window);
     if(windowType!=='undefined'){
@@ -147,7 +147,7 @@ return(
                     <tbody>
                         
                     {products && products.length>0 && products?.map((p)=>{
-                    return <tr>
+                    return <tr key={p._id}>
                         <td className="pt-4 pb-4">  <div className="image__box"> <img src={p.images[0]} width={'80px'} height={'80px'} className="object-contain" ></img> </div> {p.name} </td>
                         <td className=""> <button className="cart__btn" onClick={()=>{
                             changeProductOccurences("-",p);

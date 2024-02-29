@@ -10,7 +10,7 @@ padding: 10px;
 background-color: #222;
 color: white;
 `;
-export default function header(){
+export default function useHeader(){
 
     const {cartProducts} = useContext(CartContext);
     const cartSize = cartProducts?.length || 0;

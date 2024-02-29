@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../../components/cartContext";
 import Header from "../../../components/header";
 import "../../../components/styles/newProducts.css";
-export default function page(){
+export default function useProducts(){
     const [products,setProducts] = useState([]);
     const BASE_URL = "https://e-commerce-admin-eight-mocha.vercel.app";
     useEffect(()=>{
@@ -27,7 +27,7 @@ export default function page(){
             { products && products.length>0 &&  <h1 className="font-bold text-3xl m-auto">All Products</h1> }
             <div className=" product__container justify-center items-center flex flex-wrap">
                 {products && products.length>0 && products.map((p)=>{
-                  return <Link className="flex flex-col p-6" href={`/products/${p._id}`}>
+                  return <Link key={p._id} className="flex flex-col p-6" href={`/products/${p._id}`}>
                     <div className="product__image__container"><img className="product__image" src={p.images[0]}></img></div>
                     <div className="flex p-2 flex-col">
                     <div className="font-bold">{p.name}</div>
