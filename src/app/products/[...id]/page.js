@@ -12,15 +12,19 @@ export default function useProductsId(){
     console.log('THE ID IS : ',id);
     useEffect(()=>{
         async function getProduct(){
-            const response = await fetch(BASE_URL + "/api/getById",{
+            const response = await fetch("/api/getById",{
                 method : 'POST',
                 headers : {'Content-Type': 'application/json'},
                 body : JSON.stringify({ids : [id]})
             });
+
             if(response.ok){
                 const data = await response.json();
                 console.log('the response is : ',data);
                 setProduct(data.products[0]);
+            }else{
+                const error = await response.json();
+                console.log('THERE WAS SOME ERROR WHILE GETTING THE RESPONSE',error)
             }
         }
         getProduct();

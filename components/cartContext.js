@@ -16,6 +16,7 @@ export function CartContextProvider({children}){
         // if(cartProducts?.includes(productId)){
         //     return;
         // }
+        console.log('the product id is : ', productId);
         setCartProducts((prev)=>{
             return [...prev , productId];
         })

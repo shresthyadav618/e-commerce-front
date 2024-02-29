@@ -7,6 +7,7 @@ import "../../../components/styles/newProducts.css";
 export default function useProducts(){
     const [products,setProducts] = useState([]);
     const BASE_URL = "https://e-commerce-admin-eight-mocha.vercel.app";
+    
     useEffect(()=>{
         async function getProducts(){
             const response =  await fetch(BASE_URL + '/api/products',{
@@ -14,7 +15,7 @@ export default function useProducts(){
             });
             if(response.ok){
                 const data = await response.json();
-                setProducts(data.products);
+                setProducts(data.productsExists);
             }
         }
         getProducts();
@@ -27,7 +28,7 @@ export default function useProducts(){
             { products && products.length>0 &&  <h1 className="font-bold text-3xl m-auto">All Products</h1> }
             <div className=" product__container justify-center items-center flex flex-wrap">
                 {products && products.length>0 && products.map((p)=>{
-                  return <Link key={p._id} className="flex flex-col p-6" href={`/products/${p._id}`}>
+                  return <Link key={p._id +'d'} className="flex flex-col p-6" href={`/products/${p._id}`}>
                     <div className="product__image__container"><img className="product__image" src={p.images[0]}></img></div>
                     <div className="flex p-2 flex-col">
                     <div className="font-bold">{p.name}</div>
