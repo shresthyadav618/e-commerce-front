@@ -6,9 +6,10 @@ import Header from "../../../components/header";
 import "../../../components/styles/newProducts.css";
 export default function page(){
     const [products,setProducts] = useState([]);
+    const BASE_URL = "https://e-commerce-admin-eight-mocha.vercel.app";
     useEffect(()=>{
         async function getProducts(){
-            const response =  await fetch('/api/products',{
+            const response =  await fetch(BASE_URL + '/api/products',{
                 method : 'GET',
             });
             if(response.ok){

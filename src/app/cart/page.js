@@ -5,6 +5,7 @@ import Header from "../../../components/header"
 // import "../../styles/cart.css";
 import "../../styles/cart.css"
 export default function page(){
+    const BASE_URL = "https://e-commerce-admin-eight-mocha.vercel.app";
     const windowType = typeof(window);
     if(windowType!=='undefined'){
         const cartSession = sessionStorage.getItem('cart');
@@ -28,7 +29,7 @@ export default function page(){
             
             console.log('THE UNIQUE CART PRODUCTS ARE ',uniqueCartProducts);
             if(cartProducts.length > 0){
-                const response = await fetch('/api/getById',{
+                const response = await fetch(BASE_URL + '/api/getById',{
                     method : 'POST',
                     headers : {'Content-Type':'application/json'},
                     body : JSON.stringify({ids : uniqueProducts})
@@ -97,7 +98,7 @@ export default function page(){
 
     async function handleFormSubmit(e){
         e.preventDefault();
-        const response = await fetch('/api/checkout',{
+        const response = await fetch(BASE_URL + '/api/checkout',{
             method : 'POST',
             headers : {'Content-Type':'application/json'},
             body : JSON.stringify({...information , cartProducts , products})

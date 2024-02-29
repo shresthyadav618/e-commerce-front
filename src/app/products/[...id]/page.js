@@ -7,12 +7,12 @@ export default function page(){
     const pathname = usePathname();
     const id = pathname.split('/')[2];
     const [product,setProduct] = useState(null);
-    
+    const BASE_URL = "https://e-commerce-admin-eight-mocha.vercel.app";
 
     console.log('THE ID IS : ',id);
     useEffect(()=>{
         async function getProduct(){
-            const response = await fetch("/api/getById",{
+            const response = await fetch(BASE_URL + "/api/getById",{
                 method : 'POST',
                 headers : {'Content-Type': 'application/json'},
                 body : JSON.stringify({ids : [id]})
