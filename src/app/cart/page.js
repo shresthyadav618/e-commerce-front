@@ -29,7 +29,7 @@ export default function useCart(){
             
             console.log('THE UNIQUE CART PRODUCTS ARE ',uniqueCartProducts);
             if(cartProducts.length > 0){
-                const response = await fetch(BASE_URL + '/api/getById',{
+                const response = await fetch('/api/getById',{
                     method : 'POST',
                     headers : {'Content-Type':'application/json'},
                     body : JSON.stringify({ids : uniqueProducts})
@@ -98,7 +98,7 @@ export default function useCart(){
 
     async function handleFormSubmit(e){
         e.preventDefault();
-        const response = await fetch(BASE_URL + '/api/checkout',{
+        const response = await fetch('/api/checkout',{
             method : 'POST',
             headers : {'Content-Type':'application/json'},
             body : JSON.stringify({...information , cartProducts , products})

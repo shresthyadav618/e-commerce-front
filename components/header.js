@@ -20,7 +20,7 @@ export default function useHeader(){
         <StyledHeader>
         <Link href={'/'} className="ml-[20px]">Ecommerce</Link>
         <nav className="flex gap-x-3 text-white text-lg mr-[40px]">
-            <Link href={'/home'}>Home</Link>
+            <Link href={'/'}>Home</Link>
             <Link href={'/products'}>Products</Link>
             <Link href={'/categories'}>Categories</Link>
             <Link href={'/account'}>Account</Link>

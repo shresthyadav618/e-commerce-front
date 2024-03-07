@@ -10,12 +10,15 @@ export default function useProducts(){
     
     useEffect(()=>{
         async function getProducts(){
-            const response =  await fetch(BASE_URL + '/api/products',{
+            const response =  await fetch('/api/products',{
                 method : 'GET',
             });
             if(response.ok){
                 const data = await response.json();
-                setProducts(data.productsExists);
+                setProducts(data.products);
+            }else{
+                const error = await response.json();
+                console.log('RECEIVED AN ERROR ', error);
             }
         }
         getProducts();
